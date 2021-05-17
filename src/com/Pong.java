@@ -12,12 +12,12 @@ public class Pong implements Runnable {
     @Override
     public void run() {
         final String threadName = Thread.currentThread().getName();
-        System.out.println(threadName + " started ... ");
-
+//        System.out.println(threadName + " started ... ");
 
         for (int i = 0; i < 2; i++) {
+//            System.out.println(threadName + " Say: ");
             game.print(msg);
-            System.out.println(threadName + " is working ... ");
+
         }
     }
 }
