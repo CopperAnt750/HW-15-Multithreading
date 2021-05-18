@@ -2,16 +2,32 @@ package com;
 
 public class Main {
     public static void main(String[] args) {
-
-        PinPong pinPong = new PinPong();
-        Ping ping = new Ping(pinPong);
-        Pong pong = new Pong(pinPong);
-        Thread pingThread = new Thread(ping);
-        Thread pongThread = new Thread(pong);
-
-        pingThread.start();
-        pongThread.start();
-
-
+        PingPong pingPong = new PingPong();
+        new Thread() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 3; i++) {
+                    pingPong.m("Ping");
+                    try {
+                        sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
+        new Thread() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 3; i++) {
+                    pingPong.m("Pong");
+                    try {
+                        sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
     }
 }
